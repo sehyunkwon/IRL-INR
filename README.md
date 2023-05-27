@@ -30,10 +30,10 @@ Then reconstruction image and checkpoints will be automatically saved in direcot
 
 # **Results**
 After training IRL-INR, $J^{\text{(can)}}$ can be reconstructed by simply replacing $(\hat{\theta},\hat{\tau})$ to $(0,0)$. Regardless of rotation and translation, IRL-INR reconstructs consistent image $J^{\text{(can)}}$. 
-![input](./figure/mnist_input.png) ![output](./figure/mnist_output.png) |
-![input](./figure/wm811k_input.png) ![output](./figure/wm811k_output.png) |
-![input](./figure/cryo_input.png) ![output](./figure/cryo_output.png) |
-![input](./figure/dsprites_input.png) ![output](./figure/dsprites_output.png) |
+![input](./figure/mnist_input.png) ![output](./figure/mnist_output.png) 
+![input](./figure/wm811k_input.png) ![output](./figure/wm811k_output.png) 
+![input](./figure/cryo_input.png) ![output](./figure/cryo_output.png) 
+![input](./figure/dsprites_input.png) ![output](./figure/dsprites_output.png) 
 
 # **SCAN Clustering**
 Encoder of IRL-INR can be utilized for clustering. We faithfully follow the [SCAN source code](https://github.com/wvangansbeke/Unsupervised-Classification). Copy the checkpoint of the encoder to ./SCAN/pretrained_model.
