@@ -1,0 +1,60 @@
+# setup
+setup: selflabel
+pretrained: None
+
+# ema
+use_ema: False
+
+resolution: 50
+
+# Threshold
+confidence_threshold: 0.9
+
+# Criterion
+criterion: confidence-cross-entropy
+criterion_kwargs:
+   apply_class_balancing: True
+
+# Model
+backbone: resnet18+mlp
+model_kwargs:
+   output_dim: 128
+   num_layers: 3
+
+num_heads: 1
+
+# Dataset
+train_db_name: mnist-u
+val_db_name: mnist-u
+num_classes: 10
+
+# Transformations
+augmentation_strategy: ours+rotation+translation
+augmentation_kwargs:
+   crop_size: 50
+   normalize:
+      mean: [0.4914, 0.4822, 0.4465]
+      std: [0.2023, 0.1994, 0.2010]
+   num_strong_augs: 4
+   cutout_kwargs:
+     n_holes: 1
+     length: 16
+     random: True
+
+# transformation_kwargs:
+#    crop_size: 32
+#    normalize:
+#       mean: [0.4914, 0.4822, 0.4465]
+#       std: [0.2023, 0.1994, 0.2010]
+
+# Hyperparameters
+epochs: 200
+optimizer: adam
+optimizer_kwargs:
+   lr: 0.00001
+   weight_decay: 0.0001
+batch_size: 1000
+num_workers: 8
+
+# Scheduler
+scheduler: constant

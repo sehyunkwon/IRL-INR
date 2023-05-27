@@ -1,0 +1,29 @@
+# Setup
+setup: mining
+pretrained: True
+
+# Model
+backbone: resnet18+mlp
+model_kwargs:
+   num_layers: 3
+   output_dim: 32 # backbone's output dimension
+   head: mlp
+   features_dim: 128
+   pretrained_path: './pretrained_encoder/encoder.pt'
+
+# Dataset
+train_db_name: wm811k
+val_db_name: wm811k
+num_classes: 9
+batch_size: 512 
+num_workers: 8
+
+# Loss
+criterion_kwargs:
+   temperature: 0.1 
+
+# Transformations
+augmentation_strategy: None
+
+transformation_kwargs:
+   crop_size: 32

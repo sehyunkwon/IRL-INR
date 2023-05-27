@@ -1,0 +1,56 @@
+# setup
+setup: scan
+pretrained: None
+
+# Loss
+criterion: scan
+criterion_kwargs:
+   entropy_weight: 5.0
+
+# Weight update
+update_cluster_head_only: False # Update full network in SCAN
+num_heads: 1 # Only use one head
+
+# Model
+backbone: resnet18+mlp
+model_kwargs:
+   pretrained_path: './pretrained_encoder/encoder.pt'
+   output_dim: 512
+   num_layers: 3
+
+# Dataset
+train_db_name: wm811k
+val_db_name: wm811k
+num_classes: 9
+num_neighbors: 20
+
+# Transformations
+augmentation_strategy: rotation
+augmentation_kwargs:
+   crop_size: 32
+   normalize:
+      mean: [0.4914, 0.4822, 0.4465]
+      std: [0.2023, 0.1994, 0.2010]
+   num_strong_augs: 4
+   cutout_kwargs:
+     n_holes: 1
+     length: 16
+     random: True
+
+transformation_kwargs:
+   crop_size: 32
+   normalize:
+      mean: [0.4914, 0.4822, 0.4465]
+      std: [0.2023, 0.1994, 0.2010]
+
+# Hyperparameters
+optimizer: adam
+optimizer_kwargs:
+   lr: 0.0001
+   weight_decay: 0.0001
+epochs: 100
+batch_size: 128
+num_workers: 8
+
+# Scheduler
+scheduler: constant
