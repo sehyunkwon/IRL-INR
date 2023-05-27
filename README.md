@@ -36,18 +36,10 @@ After training IRL-INR, $J^{\text{(can)}}$ can be reconstructed by simply replac
 ![input](./figure/dsprites_input.png) ![output](./figure/dsprites_output.png) |
 
 # **SCAN Clustering**
-Encoder of IRL-INR can be utilized for clustering. We faithfully follow the [SCAN source code](https://github.com/wvangansbeke/Unsupervised-Classification). Copy the checkpoint of the encoder to ./SCAN/pretrained_model
+Encoder of IRL-INR can be utilized for clustering. We faithfully follow the [SCAN source code](https://github.com/wvangansbeke/Unsupervised-Classification). Copy the checkpoint of the encoder to ./SCAN/pretrained_model.
 
-## Mining
-To save the nearest neighbors, run below:
 ```
 python ./SCAN/mining.py --config_env configs/env.yml --config_exp configs/mining/mining_mnist.yml
-```
-## SCAN
-```
 python ./SCAN/scan.py --config_env configs/env.yml --config_exp configs/scan/mnist.yml
-```
-## Self-labeling
-```
 python ./SCAN/selflabel.py --config_env configs/env.yml --config_exp configs/selflabel/mnist.yml
 ```
